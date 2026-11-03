@@ -82,7 +82,7 @@ def test_predator_view_predator(
         env_size=env_size,
     )
 
-    predator_obs, prey_obs = observe_fn(state)
+    predator_obs, _prey_obs = observe_fn(state)
 
     assert predator_obs.shape == (n_agents, 2, observe_fn.num_vision)
 
@@ -167,7 +167,7 @@ def test_prey_view_prey(
         env_size=env_size,
     )
 
-    prey_obs, prey_obs = observe_fn(state)
+    _predator_obs, prey_obs = observe_fn(state)
 
     assert prey_obs.shape == (n_agents, 2, observe_fn.num_vision)
 

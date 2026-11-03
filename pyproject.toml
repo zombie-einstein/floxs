@@ -1,51 +1,59 @@
-[tool.poetry]
+[project]
 name = "floxs"
 version = "0.1.1"
 description = "Multi-agent RL flock and swarm environments implemented in JAX"
-authors = ["zombie-einstein <zombie-einstein@proton.me>"]
 readme = "README.md"
-packages = [{include = "floxs", from = "src"}]
-repository = "https://github.com/zombie-einstein/floxs"
-homepage = "https://zombie-einstein.github.io/floxs"
-documentation = "https://zombie-einstein.github.io/floxs"
-license = "MIT"
+authors = [
+    { name = "zombie-einstein", email = "zombie-einstein@proton.me" }
+]
+maintainers = [
+    { name = "zombie-einstein", email = "zombie-einstein@proton.me" }
+]
 keywords = [
   "simulation",
   "reinforcement-learning",
 ]
+license = "MIT"
+license-files = ["LICENSE"]
 classifiers = [
-  "Development Status :: 4 - Beta",
-  "Programming Language :: Python",
-  "Programming Language :: Python :: 3.10",
-  "Programming Language :: Python :: 3.11",
-  "Programming Language :: Python :: 3.12",
-  "Programming Language :: Python :: Implementation :: CPython",
-  "Programming Language :: Python :: Implementation :: PyPy",
-  "License :: OSI Approved :: MIT License",
-  "Environment :: GPU",
-  "Intended Audience :: Science/Research",
-  "Topic :: Scientific/Engineering :: Artificial Intelligence",
-  "Topic :: Scientific/Engineering :: Artificial Life",
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Environment :: GPU",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Artificial Life",
+]
+requires-python = ">=3.12"
+dependencies = [
+    "chex>=0.1.92",
+    "esquilax>=3.0.0",
+    "jumanji>=1.1.2",
 ]
 
-[tool.poetry.dependencies]
-python = ">=3.10,<3.12"
-jax = "^0.4.4"
-chex = "^0.1.6"
-esquilax = ">=2.0.0"
-jumanji = "^1.1.1"
-
-[tool.poetry.group.dev.dependencies]
-pre-commit = "^2.21.0"
-taskipy = "^1.10.3"
-pytest = "^7.2.1"
-sphinx = "8.1"
-piccolo-theme = "^0.24.0"
-sphinx-autoapi = "^3.6.0"
+[project.urls]
+repository = "https://github.com/zombie-einstein/floxs"
+homepage = "https://zombie-einstein.github.io/floxs/"
+documentation = "https://zombie-einstein.github.io/floxs/"
+issues = "https://github.com/zombie-einstein/floxs/issues"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["uv_build>=0.13.6,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "piccolo-theme>=0.24.0",
+    "pre-commit>=4.7.0",
+    "pytest>=9.2.0",
+    "sphinx>=9.1.1",
+    "sphinx-autoapi>=3.9.0",
+    "taskipy>=1.14.1",
+]
 
 [tool.taskipy.tasks]
 test = { cmd = "pytest tests", help="Run tests"}

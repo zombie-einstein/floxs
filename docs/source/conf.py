@@ -1,9 +1,9 @@
-import pkg_resources
+import importlib.metadata
 
 project = "Floxs"
 copyright = "2025, zombie-einstein"
 author = "zombie-einstein"
-release = pkg_resources.get_distribution("floxs").version
+release = importlib.metadata.version("floxs")
 
 extensions = [
     "sphinx.ext.napoleon",
