@@ -1,5 +1,6 @@
 """Flock environment visualisation utilities"""
-from typing import Optional, Sequence, Tuple
+
+from collections.abc import Sequence
 
 import jax.numpy as jnp
 import matplotlib.animation
@@ -16,7 +17,7 @@ class FlockViewer(MatplotlibViewer[State]):
     def __init__(
         self,
         name: str = "flock",
-        env_size: Tuple[float, float] = (1.0, 1.0),
+        env_size: tuple[float, float] = (1.0, 1.0),
         boid_color: str = "#282B28",  # black
         render_mode: str = "human",
     ) -> None:
@@ -38,9 +39,7 @@ class FlockViewer(MatplotlibViewer[State]):
         self.boid_color = boid_color
         super().__init__(name, render_mode)
 
-    def render(
-        self, state: State, save_path: Optional[str] = None
-    ) -> Optional[NDArray]:
+    def render(self, state: State, save_path: str | None = None) -> NDArray | None:
         """Render a frame of the environment for a given state using matplotlib
 
         Parameters
@@ -65,7 +64,7 @@ class FlockViewer(MatplotlibViewer[State]):
         return self._display(fig)
 
     def animate(
-        self, states: Sequence[State], interval: int, save_path: Optional[str] = None
+        self, states: Sequence[State], interval: int, save_path: str | None = None
     ) -> matplotlib.animation.FuncAnimation:
         """Create an animation from a sequence of states
 
@@ -118,11 +117,11 @@ class FlockViewer(MatplotlibViewer[State]):
 
     def _get_fig_ax(
         self,
-        name_suffix: Optional[str] = None,
+        name_suffix: str | None = None,
         show: bool = True,
         padding: float = 0.05,
         **fig_kwargs: str,
-    ) -> Tuple[plt.Figure, plt.Axes]:
+    ) -> tuple[plt.Figure, plt.Axes]:
         fig, ax = super()._get_fig_ax(
             name_suffix=name_suffix, show=show, padding=padding
         )

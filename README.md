@@ -9,7 +9,7 @@ Full documentation can be found [**here**](https://zombie-einstein.github.io/flo
   <img src="https://github.com/zombie-einstein/floxs/raw/master/.github/images/rl_boids002.gif?raw=true" width="300" />
 </p>
 
-Multi-agent RL environments with a focus on larger scale flocks and swarms on continuos
+Multi-agent RL environments with a focus on larger scale flocks and swarms on continuous
 spaces. Implemented using [Esquilax](https://zombie-einstein.github.io/esquilax/) a JAX multi-agent simulation and RL
 library, and the [Jumanji](https://github.com/instadeepai/jumanji) RL environment API.
 
@@ -26,7 +26,9 @@ states = [state]
 
 for _ in range(100):
     key, k = jax.random.split(key)
-    actions = jax.random.uniform(k, (env.generator.num_boids, 2), minval=0.5, maxval=1.0)
+    actions = jax.random.uniform(
+        k, (env.generator.num_boids, 2), minval=0.5, maxval=1.0
+    )
     state, ts = env.step(state, actions)
     states.append(state)
 
@@ -44,27 +46,16 @@ Floxs can be installed using pip
 pip install floxs
 ```
 
-From the repository the package and requirements can be installed
-using [poetry](https://python-poetry.org/docs/) by running
-
-```shell
-poetry install
-```
-
 ## Developers
 
+Floxs uses [uv](https://docs.astral.sh/uv/) for dependency management.
+
 ### Pre-Commit Hooks
-
-Pre commit hooks can be installed by running
-
-```bash
-pre-commit install
-```
 
 Pre-commit checks can then be run using
 
 ```bash
-task lint
+uv run task lint
 ```
 
 ### Tests
@@ -72,7 +63,7 @@ task lint
 Tests can be run with
 
 ```bash
-task test
+uv run task test
 ```
 
 ### Build Documentation
@@ -82,7 +73,7 @@ Docs can be built using
 by running
 
 ```bash
-task docs
+uv run task docs
 ```
 
-Built docs will be generated in the `docs/build` folder.
+Docs will be generated in the `docs/build` folder.

@@ -1,4 +1,5 @@
 """Predator-prey environment state generator"""
+
 import abc
 
 import chex

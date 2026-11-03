@@ -1,4 +1,5 @@
 """Predator-prey environment reward functions"""
+
 import abc
 
 import esquilax

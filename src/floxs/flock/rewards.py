@@ -1,6 +1,7 @@
 """Flock agent reward functions"""
+
 import abc
-from typing import Callable, Union
+from collections.abc import Callable
 
 import chex
 import esquilax
@@ -51,7 +52,7 @@ class BaseDistanceRewardFn(RewardFn):
         boid_radius: float,
         collision_penalty: float,
         i_range: float,
-        reward_fn: Callable[[float], Union[float, chex.Array]],
+        reward_fn: Callable[[float], float | chex.Array],
     ) -> None:
         """
         Base distance based reward function

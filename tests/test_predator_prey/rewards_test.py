@@ -10,7 +10,7 @@ PREY_PENALTY = 0.9
 
 
 @pytest.mark.parametrize(
-    "predator_positions, prey_positions, env_size, " "predator_expected, prey_expected",
+    "predator_positions, prey_positions, env_size, predator_expected, prey_expected",
     [
         ([(0.2, 0.5)], [(0.8, 0.5)], 1.0, [0.0], [0.0]),
         ([(0.2, 0.5)], [(0.3, 0.5)], 1.0, [PREDATOR_REWARD], [-PREY_PENALTY]),

@@ -1,5 +1,4 @@
 """Flock agent observation function"""
-from typing import Tuple
 
 import chex
 import esquilax
@@ -9,7 +8,7 @@ from jumanji.environments.swarms.common.updates import view, view_reduction_fn
 from .types import State
 
 
-def _view_reduction(view_shape: Tuple[int, ...]) -> esquilax.reductions.Reduction:
+def _view_reduction(view_shape: tuple[int, ...]) -> esquilax.reductions.Reduction:
     return esquilax.reductions.Reduction(
         fn=view_reduction_fn,
         id=-jnp.ones(view_shape),

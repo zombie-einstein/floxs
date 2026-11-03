@@ -4,8 +4,9 @@ Flock multi-agent RL environment
 Multi-agent environment inspired by Reynolds boid model. Agents
 aim to stay close to other agents without colliding.
 """
+
+from collections.abc import Sequence
 from functools import cached_property, partial
-from typing import Optional, Sequence
 
 import chex
 import jax
@@ -34,10 +35,10 @@ class Flock(Environment):
         boid_max_speed: float = 0.025,
         time_limit: int = 400,
         boid_radius: float = 0.01,
-        viewer: Optional[Viewer[State]] = None,
-        generator: Optional[Generator] = None,
-        reward_fn: Optional[RewardFn] = None,
-        observation: Optional[ObservationFn] = None,
+        viewer: Viewer[State] | None = None,
+        generator: Generator | None = None,
+        reward_fn: RewardFn | None = None,
+        observation: ObservationFn | None = None,
     ) -> None:
         """
         Flock multi-agent environment
@@ -131,8 +132,8 @@ class Flock(Environment):
                 f" - boid view angle: {self._observation_fn.view_angle}",
                 f" - num vision: {self._observation_fn.num_vision}",
                 f" - boid radius: {self._observation_fn.boid_radius}",
-                f" - time limit: {self.time_limit},"
-                f" - env size: {self.generator.env_size}"
+                f" - time limit: {self.time_limit},",
+                f" - env size: {self.generator.env_size}",
                 f" - generator: {self.generator.__class__.__name__}",
                 f" - reward fn: {self._reward_fn.__class__.__name__}",
                 f" - observation fn: {self._observation_fn.__class__.__name__}",
@@ -321,7 +322,7 @@ class Flock(Environment):
         self,
         states: Sequence[State],
         interval: int = 100,
-        save_path: Optional[str] = None,
+        save_path: str | None = None,
     ) -> FuncAnimation:
         """Create an animation from a sequence of environment states
 
