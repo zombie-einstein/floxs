@@ -9,7 +9,7 @@ Full documentation can be found [**here**](https://zombie-einstein.github.io/flo
   <img src="https://github.com/zombie-einstein/floxs/raw/master/.github/images/rl_boids002.gif?raw=true" width="300" />
 </p>
 
-Multi-agent RL environments with a focus on larger scale flocks and swarms on continuos
+Multi-agent RL environments with a focus on larger scale flocks and swarms on continuous
 spaces. Implemented using [Esquilax](https://zombie-einstein.github.io/esquilax/) a JAX multi-agent simulation and RL
 library, and the [Jumanji](https://github.com/instadeepai/jumanji) RL environment API.
 
